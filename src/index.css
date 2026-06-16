@@ -1,0 +1,200 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque", "Hanken Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --color-brand-50: #f5f3ff;
+  --color-brand-100: #ede9fe;
+  --color-brand-200: #ddd6fe;
+  --color-brand-300: #c4b5fd;
+  --color-brand-400: #a78bfa;
+  --color-brand-500: #8b5cf6;
+  --color-brand-600: #7c3aed;
+  --color-brand-700: #6d28d9;
+
+  --color-accent-400: #22d3ee;
+  --color-accent-500: #06b6d4;
+}
+
+:root {
+  --bg: #faf9ff;
+  --bg-soft: #f1effb;
+  --surface: #ffffff;
+  --border: rgba(20, 19, 31, 0.1);
+  --text: #16131f;
+  --text-soft: #56526a;
+  --grid-line: rgba(20, 19, 31, 0.05);
+
+  --accent: #6d28d9;
+  --accent-2: #0891b2;
+  --accent-3: #b45309;
+  --accent-solid: #7c5cff;
+  --on-accent: #ffffff;
+
+  --grad-from: #6d28d9;
+  --grad-to: #0891b2;
+}
+
+.dark {
+  --bg: #0b0a12;
+  --bg-soft: #110f1c;
+  --surface: #15131f;
+  --border: rgba(167, 139, 250, 0.12);
+  --text: #f4f3ff;
+  --text-soft: #a09cb8;
+  --grid-line: rgba(167, 139, 250, 0.05);
+
+  --accent: #a78bfa;
+  --accent-2: #22d3ee;
+  --accent-3: #fbbf24;
+  --accent-solid: #7c5cff;
+  --on-accent: #ffffff;
+
+  --grad-from: #a78bfa;
+  --grad-to: #22d3ee;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: var(--accent-solid);
+    color: var(--on-accent);
+  }
+}
+
+.text-soft {
+  color: var(--text-soft);
+}
+.text-accent {
+  color: var(--accent);
+}
+.text-accent-2 {
+  color: var(--accent-2);
+}
+.text-accent-3 {
+  color: var(--accent-3);
+}
+.bg-accent {
+  background-color: var(--accent);
+}
+.bg-surface {
+  background-color: var(--surface);
+}
+.bg-soft {
+  background-color: var(--bg-soft);
+}
+.border-app {
+  border-color: var(--border);
+}
+
+.hover\:text-accent:hover {
+  color: var(--accent);
+}
+.hover\:border-accent:hover {
+  border-color: var(--accent);
+}
+
+.btn-primary {
+  background-color: var(--accent-solid);
+  color: var(--on-accent);
+}
+.btn-primary:hover {
+  filter: brightness(0.94);
+}
+
+.gradient-text {
+  background: linear-gradient(115deg, var(--grad-from), var(--grad-to));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 72px 72px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 40%, transparent 100%);
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 40%, transparent 100%);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.type-caret {
+  display: inline-block;
+  width: 0.06em;
+  margin-left: 0.08em;
+  background-color: var(--accent);
+  animation: caret-blink 1s steps(1) infinite;
+}
+
+@keyframes caret-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+  .type-caret {
+    animation: none !important;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+section[id] {
+  scroll-margin-top: 6rem;
+}
+
+@media (pointer: fine) {
+  .cursor-none,
+  .cursor-none * {
+    cursor: none !important;
+  }
+}
