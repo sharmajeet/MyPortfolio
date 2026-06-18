@@ -44,7 +44,7 @@ export function MagneticButton({ children, href, onClick, className, download, t
 
   if (href) {
     return (
-      <a ref={ref} href={href} download={download} target={target} rel={target ? "noreferrer" : undefined} className={classes}>
+      <a ref={ref} href={href} onClick={onClick} download={download} target={target} rel={target ? "noreferrer" : undefined} className={classes}>
         {children}
       </a>
     );

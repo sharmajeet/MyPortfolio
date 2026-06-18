@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
-import type { Project } from "../data/portfolio";
+import type { Project } from "../data";
 import { projectBackground } from "./projectBackgrounds";
 import { prefersReducedMotion } from "../lib/gsap";
 import { ChevronIcon, GithubIcon, ExternalIcon, ArrowIcon } from "./icons";
@@ -32,10 +32,12 @@ export function ProjectCarousel({ projects }: { projects: Project[] }) {
   const goTo = (i: number) => setPage([i, i > index ? 1 : -1]);
 
   useEffect(() => {
-    if (paused || reduce) return;
+    if (paused || reduce || n < 2) return;
     const id = window.setInterval(() => setPage(([p]) => [p + 1, 1]), 6000);
     return () => window.clearInterval(id);
-  }, [paused, reduce]);
+  }, [paused, reduce, n]);
+
+  if (!n) return null;
 
   return (
     <div

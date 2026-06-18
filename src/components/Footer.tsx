@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { profile } from "../data/portfolio";
+import { profile } from "../data";
 
 const socials = [
   { label: "GitHub", href: profile.github },
@@ -12,7 +12,7 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <p className="max-w-sm text-soft">
-            Building scalable systems and clean interfaces. Always open to a good problem.
+            Backend engineer who builds for scale. Let's build something.
           </p>
           <a
             href={`mailto:${profile.email}`}

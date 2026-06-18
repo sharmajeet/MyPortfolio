@@ -1,9 +1,10 @@
 import { useRef } from "react";
 import { gsap, useGSAP, prefersReducedMotion } from "../lib/gsap";
-import { profile } from "../data/portfolio";
+import { profile } from "../data";
 import { useTypewriter } from "../hooks/useTypewriter";
 import { MagneticButton } from "./MagneticButton";
 import { HeroVisual } from "./HeroVisual";
+import { Counter } from "./Counter";
 import { ArrowIcon } from "./icons";
 
 export function Hero() {
@@ -53,8 +54,8 @@ export function Hero() {
           </div>
 
           <p className="hero-sub mt-7 max-w-xl text-lg text-soft">
-            I design and build scalable backend systems — distributed microservices, clean APIs,
-            and cloud-native deployments with Node.js, .NET, AWS &amp; Azure.
+            I build backend systems that scale — APIs, distributed services, and cloud
+            infrastructure with Node.js, .NET, AWS &amp; Azure.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
@@ -75,7 +76,9 @@ export function Hero() {
           <dl className="mt-14 flex flex-wrap gap-10">
             {profile.stats.map((stat) => (
               <div key={stat.label} className="hero-stat">
-                <dt className="font-display text-3xl font-bold md:text-4xl">{stat.value}</dt>
+                <dt className="font-display text-3xl font-bold md:text-4xl">
+                  <Counter value={stat.value} />
+                </dt>
                 <dd className="mt-1 text-sm text-soft">{stat.label}</dd>
               </div>
             ))}

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { projectsBySlug, projects } from "../data/portfolio";
+import { projectsBySlug, projects } from "../data";
 import { Reveal } from "../components/Reveal";
 import { GithubIcon, ExternalIcon, ArrowIcon } from "../components/icons";
 

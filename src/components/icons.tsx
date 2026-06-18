@@ -32,6 +32,33 @@ export const CheckIcon = ({ className }: IconProps) => (
   </svg>
 );
 
+export const ServerIcon = ({ className }: IconProps) => (
+  <svg className={className} width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="3" y="4" width="18" height="6" rx="2" />
+    <rect x="3" y="14" width="18" height="6" rx="2" />
+    <path d="M7 7h.01M7 17h.01" />
+  </svg>
+);
+
+export const CloudIcon = ({ className }: IconProps) => (
+  <svg className={className} width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M17.5 19a4.5 4.5 0 0 0 .5-8.98 6 6 0 0 0-11.64-1.6A4 4 0 0 0 6.5 19h11z" />
+  </svg>
+);
+
+export const DatabaseIcon = ({ className }: IconProps) => (
+  <svg className={className} width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <ellipse cx="12" cy="5" rx="8" ry="3" />
+    <path d="M4 5v6c0 1.66 3.58 3 8 3s8-1.34 8-3V5M4 11v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6" />
+  </svg>
+);
+
+export const LayersIcon = ({ className }: IconProps) => (
+  <svg className={className} width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <path d="m12 2 9 5-9 5-9-5 9-5zM3 12l9 5 9-5M3 17l9 5 9-5" />
+  </svg>
+);
+
 export const ChevronIcon = ({ className }: IconProps) => (
   <svg className={className} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
     <path d="m9 18 6-6-6-6" />

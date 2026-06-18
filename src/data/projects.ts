@@ -1,98 +1,3 @@
-export const profile = {
-  name: "Jeet Sharma",
-  role: "Software Developer",
-  roles: [
-    "Node.js & Backend Developer",
-    "Cloud & DevOps · AWS · Azure",
-    ".NET Engineer (C#)",
-    "Distributed Systems",
-  ],
-  tagline: "I build scalable full-stack systems",
-  location: "Ahmedabad, India",
-  availability: "Open to opportunities · Across India",
-  email: "jeetsharma2003.dev@gmail.com",
-  phone: "+91-6355388151",
-  github: "https://github.com/sharmajeet",
-  linkedin: "https://www.linkedin.com/in/sharma-jeet/",
-  resumeUrl: "/Jeet_Sharma_Resume.pdf",
-  summary:
-    "Backend-focused software developer with 1+ year of professional experience building scalable, high-performing services and APIs with Node.js and .NET (C#). Strong in distributed systems, microservices, and SQL databases — with hands-on DevOps and cloud experience across AWS, Azure, Docker, and CI/CD, plus a solid foundation in OOP, the SDLC, and Agile practices.",
-  stats: [
-    { value: "1+", label: "Years experience" },
-    { value: "8.3", label: "B.Tech CGPA" },
-    { value: "10+", label: "Projects shipped" },
-  ],
-};
-
-export const systemDesign = {
-  title: "Backend & System Design",
-  body: "I design scalable, distributed systems — microservices, event-driven architecture, caching, and message queues — and ship them to the cloud on AWS & Azure with Docker and CI/CD.",
-  tags: [
-    "Distributed Systems",
-    "Microservices",
-    "Event-Driven Architecture",
-    "Caching (Redis)",
-    "Message Queues (RabbitMQ)",
-    "Load Balancing",
-    "API Design",
-    "Multi-tenant / RBAC",
-    "AWS",
-    "Azure",
-  ],
-};
-
-export type SkillGroup = { title: string; items: string[] };
-
-export const skills: SkillGroup[] = [
-  {
-    title: "Backend & APIs",
-    items: ["Node.js", "Express.js", ".NET (C#)", "REST APIs", "Microservices"],
-  },
-  { title: "Cloud & DevOps", items: ["AWS", "Azure", "Docker", "CI/CD"] },
-  { title: "Databases", items: ["PostgreSQL", "MongoDB", "Redis", "SQL"] },
-  { title: "Frontend", items: ["Angular", "Next.js", "TypeScript"] },
-];
-
-export type Experience = {
-  company: string;
-  role: string;
-  period: string;
-  location: string;
-  url?: string;
-  tech: string[];
-  highlights: string[];
-};
-
-export const experience: Experience[] = [
-  {
-    company: "Techextensor Pvt. Ltd.",
-    role: "Associate Software Developer",
-    period: "Dec 2025 — Present",
-    location: "Ahmedabad, India",
-    url: "https://techextensor.com",
-    tech: [".NET 8 (C#)", "Angular", "SQL Server", "RabbitMQ", "Microservices", "Background Jobs"],
-    highlights: [
-      "Contributing to Boardroom, a large-scale financial platform for employee equity management.",
-      "Building full-stack features with .NET (C#) on the back end and Angular on the front end.",
-      "Designing database schemas, optimizing SQL queries, and tuning data models for high-throughput transaction processing.",
-      "Implementing background job scheduling and async processing for workflow automation.",
-      "Integrating RabbitMQ for reliable event-driven communication across distributed services.",
-    ],
-  },
-  {
-    company: "TurningPoint",
-    role: "Backend Developer",
-    period: "Jul 2025 — Dec 2025",
-    location: "Vadodara, India",
-    tech: ["Node.js", "Express.js", "REST APIs", "Push / Email / SMS"],
-    highlights: [
-      "Built Checkdin, a professional networking platform with gamified engagement.",
-      "Designed backend workflows and APIs in Node.js for authentication, referrals, and leaderboards.",
-      "Implemented notification services across push, email, and SMS channels.",
-    ],
-  },
-];
-
 export type DetailBlock = { title: string; body: string };
 export type BeforeAfter = { before: string; after: string };
 export type Metric = { value: string; label: string };
@@ -237,7 +142,7 @@ export const projects: Project[] = [
     name: "PromptSDK",
     blurb: "Enterprise AI orchestration platform",
     description:
-      "Backend services for an enterprise AI orchestration platform enabling usage tracking, governance controls, and adoption monitoring. Multi-tenant microservices architecture with RBAC, RabbitMQ, and Redis for scalable distributed communication and caching.",
+      "Gives enterprises visibility and control over how AI is used across teams. A multi-tenant microservices backend with RBAC, RabbitMQ, and Redis built to scale.",
     period: "Dec 2025",
     tags: ["Node.js", "Microservices", "RabbitMQ", "Redis", "RBAC"],
     featured: true,
@@ -291,7 +196,7 @@ export const projects: Project[] = [
     name: "StudyNotion",
     blurb: "E-learning marketplace",
     description:
-      "A responsive e-learning marketplace for course discovery, purchase, and live lecture participation. Built with Next.js, Node.js, and MongoDB, with instructor/student dashboards and Razorpay payment integration.",
+      "A full-stack e-learning marketplace where students buy courses and join live lectures, and instructors manage their content. Built with Next.js, Node.js, MongoDB, and Razorpay.",
     period: "Dec 2023 — Mar 2024",
     tags: ["Next.js", "Node.js", "MongoDB", "Razorpay"],
     github: "https://github.com/sharmajeet/study-notion",
@@ -348,7 +253,7 @@ export const projects: Project[] = [
     name: "Checkdin",
     blurb: "Gamified professional network",
     description:
-      "A professional networking platform with gamified engagement. Backend workflows and APIs for authentication, referrals, leaderboards, and multi-channel notifications.",
+      "A professional network with gamified engagement. I built the backend — auth, referrals, leaderboards, and push/email/SMS notifications.",
     period: "Jul 2025 — Dec 2025",
     tags: ["Node.js", "Express.js", "JavaScript"],
     featured: true,
@@ -395,32 +300,3 @@ export const projects: Project[] = [
 ];
 
 export const projectsBySlug = Object.fromEntries(projects.map((p) => [p.slug, p]));
-
-export const education = [
-  {
-    degree: "B.Tech, Computer Science and Engineering",
-    school: "Parul Institute of Engineering and Technology, Vadodara",
-    period: "2022 — 2025",
-    score: "CGPA 8.3",
-  },
-  {
-    degree: "Diploma, Computer Science and Engineering",
-    school: "Parul Institute of Engineering and Technology, Vadodara",
-    period: "2019 — 2022",
-    score: "CGPA 9.3",
-  },
-];
-
-export const achievements = [
-  "Runner-Up — Digital India Hackathon",
-  "Microsoft Certified: Azure Fundamentals (AZ-900)",
-  "Microsoft Identity and Access Administrator (SC-300 Training)",
-];
-
-export const navLinks = [
-  { label: "Projects", href: "#projects" },
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Work", href: "#experience" },
-  { label: "Contact", href: "#contact" },
-];

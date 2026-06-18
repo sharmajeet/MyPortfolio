@@ -198,3 +198,53 @@ section[id] {
     cursor: none !important;
   }
 }
+
+.toast-root[data-state="open"] {
+  animation: toast-in 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.toast-root[data-state="closed"] {
+  animation: toast-out 0.2s ease-in forwards;
+}
+.toast-root[data-swipe="move"] {
+  transform: translateX(var(--radix-toast-swipe-move-x));
+}
+.toast-root[data-swipe="cancel"] {
+  transform: translateX(0);
+  transition: transform 0.2s ease-out;
+}
+.toast-root[data-swipe="end"] {
+  animation: toast-out 0.2s ease-in forwards;
+}
+@keyframes toast-in {
+  from { transform: translateX(120%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+@keyframes toast-out {
+  to { transform: translateX(120%); opacity: 0; }
+}
+
+.tip-content[data-state="delayed-open"] {
+  animation: tip-in 0.16s ease-out;
+}
+@keyframes tip-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.accordion-content {
+  overflow: hidden;
+}
+.accordion-content[data-state="open"] {
+  animation: acc-down 0.28s ease-out;
+}
+.accordion-content[data-state="closed"] {
+  animation: acc-up 0.22s ease-out;
+}
+@keyframes acc-down {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+@keyframes acc-up {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
+}

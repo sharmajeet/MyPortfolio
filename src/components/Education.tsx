@@ -1,10 +1,10 @@
-import { education, achievements } from "../data/portfolio";
+import { education, achievements } from "../data";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 
 export function Education() {
   return (
-    <section id="education" className="flex min-h-screen flex-col justify-center bg-soft py-24">
+    <section id="education" className="bg-soft py-24 md:py-32">
       <div className="mx-auto w-full max-w-7xl px-6">
         <SectionHeading index="05" title="Education & Credentials" />
         <div className="grid gap-12 md:grid-cols-2">

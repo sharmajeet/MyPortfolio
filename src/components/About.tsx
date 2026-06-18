@@ -1,10 +1,10 @@
-import { profile } from "../data/portfolio";
+import { profile } from "../data";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 
 export function About() {
   return (
-    <section id="about" className="mx-auto flex min-h-screen max-w-7xl flex-col justify-center px-6 py-24">
+    <section id="about" className="mx-auto max-w-7xl px-6 py-24 md:py-32">
       <SectionHeading index="02" title="About" />
       <div className="grid gap-12 md:grid-cols-[1.4fr_1fr]">
         <Reveal>
@@ -19,7 +19,7 @@ export function About() {
           </div>
           <div>
             <p className="text-sm uppercase tracking-widest text-accent">Approach</p>
-            <p className="mt-2">Agile delivery, clean code, and continuous learning.</p>
+            <p className="mt-2">Clean, maintainable code — shipped on schedule.</p>
           </div>
           <div>
             <p className="text-sm uppercase tracking-widest text-accent">Based in</p>
