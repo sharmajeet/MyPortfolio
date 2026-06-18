@@ -16,4 +16,8 @@ const commentSchema = new Schema(
   { timestamps: { createdAt: true, updatedAt: false } },
 );
 
+// Azure Cosmos DB (Mongo API) only allows sorting/filtering on indexed fields.
+// A wildcard index covers every field, so `.sort({ createdAt })` works on Cosmos.
+commentSchema.index({ "$**": 1 });
+
 export const CommentModel = model("Comment", commentSchema);

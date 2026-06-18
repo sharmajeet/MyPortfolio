@@ -15,4 +15,9 @@ const eventSchema = new Schema(
   { timestamps: { createdAt: true, updatedAt: false } },
 );
 
+// Azure Cosmos DB (Mongo API) only allows sorting/filtering/aggregating on indexed
+// fields. A wildcard index covers every field, so the analytics range-match,
+// `distinct`, and `$group` pipelines work on Cosmos.
+eventSchema.index({ "$**": 1 });
+
 export const EventModel = model("Event", eventSchema);
