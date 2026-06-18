@@ -1,0 +1,43 @@
+name: Build and Push Backend Image
+
+# Builds the single Docker image (React frontend + Express API) and pushes it to
+# GitHub Container Registry (ghcr.io) — free for public images. Azure Container Apps
+# then pulls this image. No paid Azure Container Registry needed.
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - "server/**"
+      - "src/**"
+      - "public/**"
+      - "Dockerfile"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/build-backend-image.yml"
+  workflow_dispatch: {}
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: ghcr.io/sharmajeet/myportfolio:latest
