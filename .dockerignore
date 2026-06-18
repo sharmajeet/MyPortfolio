@@ -1,0 +1,18 @@
+# Never copy installed deps, build output, secrets, or local cruft into the image
+**/node_modules
+**/dist
+dist-ssr
+**/.env
+**/.env.*
+!**/.env.example
+.git
+.gitignore
+*.log
+.vite
+.DS_Store
+deploy-azure.ps1
+Dockerfile
+.dockerignore
+docker-compose.yml
+README.md
+**/README.md

@@ -5,14 +5,15 @@ import { prefersReducedMotion } from "../lib/gsap";
 const lines = [
   { prompt: "$", cmd: "whoami", out: "jeet-sharma · backend developer" },
   { prompt: "$", cmd: "cat stack.txt", out: "Node.js · .NET · SQL · Redis" },
+  { prompt: "$", cmd: "git log --oneline -1", out: "feat: ship boardroom esp module" },
   { prompt: "$", cmd: "deploy --cloud aws,azure", out: "✓ docker build  ✓ shipped to prod" },
 ];
 
 const pills = [
-  { label: "Node.js", x: "-8%", y: "12%", delay: 0 },
-  { label: "AWS", x: "92%", y: "22%", delay: 0.4 },
-  { label: "Azure", x: "-6%", y: "74%", delay: 0.8 },
-  { label: "Docker", x: "88%", y: "82%", delay: 1.2 },
+  { label: "Node.js", x: "-7%", y: "8%", delay: 0 },
+  { label: "AWS", x: "93%", y: "16%", delay: 0.4 },
+  { label: "Azure", x: "-5%", y: "82%", delay: 0.8 },
+  { label: "Docker", x: "90%", y: "88%", delay: 1.2 },
 ];
 
 export function HeroVisual() {
@@ -21,8 +22,8 @@ export function HeroVisual() {
 
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
-  const rotateX = useSpring(useTransform(my, [-0.5, 0.5], [9, -9]), { stiffness: 150, damping: 18 });
-  const rotateY = useSpring(useTransform(mx, [-0.5, 0.5], [-12, 12]), { stiffness: 150, damping: 18 });
+  const rotateX = useSpring(useTransform(my, [-0.5, 0.5], [8, -8]), { stiffness: 150, damping: 18 });
+  const rotateY = useSpring(useTransform(mx, [-0.5, 0.5], [-10, 10]), { stiffness: 150, damping: 18 });
 
   const onMove = (e: React.MouseEvent) => {
     if (reduce || !ref.current) return;
@@ -40,11 +41,11 @@ export function HeroVisual() {
       ref={ref}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
-      className="relative hidden h-[34rem] w-full items-center justify-center lg:flex"
-      style={{ perspective: 1000 }}
+      className="relative hidden h-[40rem] w-full items-center justify-center lg:flex"
+      style={{ perspective: 1100 }}
     >
       <motion.div
-        className="absolute h-72 w-72 rounded-full bg-brand-400/25 blur-[90px]"
+        className="absolute h-96 w-96 rounded-full bg-brand-400/25 blur-[110px]"
         animate={reduce ? undefined : { scale: [1, 1.15, 1], opacity: [0.7, 1, 0.7] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       />
@@ -54,9 +55,9 @@ export function HeroVisual() {
         initial={{ opacity: 0, y: 40, rotateX: -10 }}
         animate={{ opacity: 1, y: 0, rotateX: 0 }}
         transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
-        className="relative w-[26rem] max-w-full rounded-2xl border border-app bg-surface/80 shadow-2xl shadow-black/40 backdrop-blur-xl"
+        className="relative w-full max-w-[34rem] rounded-2xl border border-app bg-surface/80 shadow-2xl shadow-black/40 backdrop-blur-xl"
       >
-        <div className="flex items-center gap-2 border-b border-app px-4 py-3">
+        <div className="flex items-center gap-2 border-b border-app px-5 py-3.5">
           <span className="h-3 w-3 rounded-full bg-red-400/80" />
           <span className="h-3 w-3 rounded-full bg-yellow-400/80" />
           <span className="h-3 w-3 rounded-full bg-brand-400/90" />
@@ -64,10 +65,10 @@ export function HeroVisual() {
         </div>
 
         <motion.div
-          className="space-y-4 p-5 font-mono text-sm"
+          className="space-y-5 p-6 font-mono text-[0.95rem]"
           initial="hidden"
           animate="show"
-          variants={{ show: { transition: { staggerChildren: 0.35, delayChildren: 0.8 } } }}
+          variants={{ show: { transition: { staggerChildren: 0.3, delayChildren: 0.8 } } }}
         >
           {lines.map((line) => (
             <motion.div
@@ -89,17 +90,26 @@ export function HeroVisual() {
         </motion.div>
       </motion.div>
 
+      <motion.div
+        className="absolute right-[-3%] top-[2%] flex items-center gap-2 rounded-xl border border-app bg-surface/90 px-3.5 py-2 shadow-lg backdrop-blur"
+        initial={{ opacity: 0, scale: 0.6, y: 10 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ delay: 1, duration: 0.5 }}
+      >
+        <span className="relative flex h-2 w-2">
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
+          <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+        </span>
+        <span className="font-mono text-xs">Available for work</span>
+      </motion.div>
+
       {pills.map((pill) => (
         <motion.span
           key={pill.label}
           className="absolute rounded-full border border-app bg-surface/90 px-3 py-1.5 font-mono text-xs shadow-lg backdrop-blur"
           style={{ left: pill.x, top: pill.y }}
           initial={{ opacity: 0, scale: 0.6 }}
-          animate={
-            reduce
-              ? { opacity: 1, scale: 1 }
-              : { opacity: 1, scale: 1, y: [0, -10, 0] }
-          }
+          animate={reduce ? { opacity: 1, scale: 1 } : { opacity: 1, scale: 1, y: [0, -10, 0] }}
           transition={{
             opacity: { delay: 1.2 + pill.delay, duration: 0.4 },
             scale: { delay: 1.2 + pill.delay, duration: 0.4 },

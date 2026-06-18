@@ -17,6 +17,8 @@ const schema = z.object({
   ADMIN_EMAIL: z.string().email().optional(),
   ADMIN_PASSWORD: z.string().min(8).optional(),
   RESUME_PATH: z.string().min(1, "RESUME_PATH is required"),
+  // When set, the API also serves the built frontend from this directory (single-image deploy).
+  WEB_DIR: z.string().optional(),
 });
 
 const parsed = schema.safeParse(process.env);

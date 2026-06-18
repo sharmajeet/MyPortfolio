@@ -31,7 +31,7 @@ export function Hero() {
   );
 
   return (
-    <section ref={root} id="top" className="relative grid min-h-screen place-items-center overflow-hidden px-6">
+    <section ref={root} id="top" className="relative grid min-h-screen content-start justify-items-stretch overflow-hidden px-6 pt-28 pb-20 md:content-center md:pt-0 md:pb-0">
       <div className="absolute inset-0 -z-10 grid-bg" />
       <div className="hero-orb pointer-events-none absolute -top-40 left-1/4 -z-10 h-[42rem] w-[42rem] -translate-x-1/2 rounded-full bg-brand-400/20 blur-[130px]" />
       <div className="hero-orb pointer-events-none absolute -bottom-20 right-0 -z-10 h-[32rem] w-[32rem] rounded-full bg-accent-400/15 blur-[130px]" />
