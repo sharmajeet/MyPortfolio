@@ -16,5 +16,9 @@ export default defineConfig(({ mode }) => {
         },
       },
     },
+    // Handle SPA routing: redirect all non-existent routes to index.html
+    define: {
+      "process.env.VITE_API_URL": JSON.stringify(env.VITE_API_URL || ""),
+    },
   };
 });
