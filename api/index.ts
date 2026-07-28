@@ -1,30 +1,36 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { createApp } from '../server/src/app.js';
-import { env } from '../server/src/config/env.js';
-import { connectDatabase, disconnectDatabase } from '../server/src/config/database.js';
+import { connectDatabase } from '../server/src/config/database.js';
 
-// Single app instance
-let app: any = null;
-let dbConnected = false;
+// Build the Express app once per warm instance.
+let app: ReturnType<typeof createApp> | null = null;
 
-async function initializeApp() {
-  if (app) return app;
-
-  if (!dbConnected) {
-    await connectDatabase();
-    dbConnected = true;
+function getApp() {
+  if (!app) {
+    app = createApp();
   }
-
-  app = createApp();
   return app;
 }
 
 export default async (req: VercelRequest, res: VercelResponse) => {
   try {
-    const expressApp = await initializeApp();
+    // Health check must not depend on the database so we can verify the
+    // function is live even when MongoDB is unreachable.
+    const isHealthCheck = req.url === '/api/health' || req.url === '/health';
+
+    if (!isHealthCheck) {
+      await connectDatabase();
+    }
+
+    const expressApp = getApp();
     return expressApp(req, res);
   } catch (error) {
-    console.error('Error initializing app:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    console.error('[v0] Error handling request:', error);
+    if (!res.headersSent) {
+      res.status(500).json({
+        error: 'Internal server error',
+        message: error instanceof Error ? error.message : 'Unknown error',
+      });
+    }
   }
 };
