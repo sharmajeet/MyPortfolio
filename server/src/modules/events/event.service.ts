@@ -6,7 +6,12 @@ export class EventService {
   constructor(private readonly repository: EventRepository) {}
 
   track(input: TrackEventInput, context: ClientContext): Promise<void> {
-    return this.repository.record({ ...context, ...input });
+    return this.repository.record({
+      ...context,
+      type: input.type,
+      path: input.path,
+      metadata: input.metadata,
+    });
   }
 
   getStats(range: DateRange): Promise<EventStats> {
