@@ -2,15 +2,6 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "installCommand": "npm install && cd server && npm install",
-  "env": {
-    "MONGODB_URI": "@mongodb_uri",
-    "CORS_ORIGIN": "@cors_origin",
-    "JWT_SECRET": "@jwt_secret",
-    "ADMIN_EMAIL": "@admin_email",
-    "ADMIN_PASSWORD": "@admin_password",
-    "RESUME_PATH": "@resume_path",
-    "NODE_ENV": "production"
-  },
   "functions": {
     "api/**": {
       "maxDuration": 30
